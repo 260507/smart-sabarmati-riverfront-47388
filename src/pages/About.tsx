@@ -3,10 +3,10 @@ import { Cpu, Waves, Target, Award, Users, Lightbulb } from "lucide-react";
 
 const About = () => {
   const teamMembers = [
-    { name: "N. Nithisree", role: "Project Lead" },
-    { name: "P. Piragadee Shree", role: "AI/ML Engineer" },
-    { name: "R. Rohini", role: "IoT Specialist" },
-    { name: "E. Senthamil Kannan", role: "Systems Architect" },
+    { name: "N.Nithisree", role: "Project Lead" },
+    { name: "P.Piragadee Shree", role: "AI/ML Engineer" },
+    { name: "R.Rohini", role: "IoT Specialist" },
+    { name: "E.Senthamil Kannan", role: "Systems Architect" },
   ];
 
   const impacts = [
