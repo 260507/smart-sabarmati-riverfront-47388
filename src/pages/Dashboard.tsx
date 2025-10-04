@@ -97,13 +97,13 @@ const Dashboard = () => {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="temperature-glow">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-sm font-medium">Temperature</CardTitle>
-              <Thermometer className="h-4 w-4 text-muted-foreground" />
+              <Thermometer className="h-4 w-4 text-secondary" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-accent">
+              <div className="text-2xl font-bold text-secondary">
                 {liveData.temperature.toFixed(1)}°C
               </div>
               <p className="text-xs text-muted-foreground mt-1">Within normal range</p>
