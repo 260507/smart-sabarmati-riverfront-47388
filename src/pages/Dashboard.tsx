@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
-import { Droplets, Thermometer, TestTube, Activity, AlertTriangle, CheckCircle } from "lucide-react";
+import { Droplets, Thermometer, TestTube, Activity, AlertTriangle, CheckCircle, Waves, FlaskConical, Skull } from "lucide-react";
 
 const Dashboard = () => {
   const [liveData, setLiveData] = useState({
@@ -9,6 +9,9 @@ const Dashboard = () => {
     ph: 7.2,
     temperature: 28.5,
     dissolvedOxygen: 6.8,
+    bod: 4.2,
+    cod: 18.5,
+    heavyMetals: 0.03,
   });
 
   // Simulate live data updates
@@ -19,6 +22,9 @@ const Dashboard = () => {
         ph: 6.8 + Math.random() * 0.8,
         temperature: 26 + Math.random() * 5,
         dissolvedOxygen: 6 + Math.random() * 2,
+        bod: 3 + Math.random() * 3,
+        cod: 15 + Math.random() * 10,
+        heavyMetals: 0.01 + Math.random() * 0.05,
       });
     }, 3000);
 
@@ -33,6 +39,9 @@ const Dashboard = () => {
       ph: 6.8 + Math.random() * 0.8,
       temperature: 26 + Math.random() * 5,
       dissolvedOxygen: 6 + Math.random() * 2,
+      bod: 3 + Math.random() * 3,
+      cod: 15 + Math.random() * 10,
+      heavyMetals: 0.01 + Math.random() * 0.05,
     }));
   };
 
@@ -52,6 +61,15 @@ const Dashboard = () => {
     }
     if (type === "turbidity") {
       return value < 30 ? "text-accent" : "text-destructive";
+    }
+    if (type === "bod") {
+      return value < 5 ? "text-accent" : "text-destructive";
+    }
+    if (type === "cod") {
+      return value < 20 ? "text-accent" : "text-destructive";
+    }
+    if (type === "heavyMetals") {
+      return value < 0.05 ? "text-accent" : "text-destructive";
     }
     return "text-accent";
   };
@@ -120,6 +138,51 @@ const Dashboard = () => {
                 {liveData.dissolvedOxygen.toFixed(1)} mg/L
               </div>
               <p className="text-xs text-muted-foreground mt-1">Healthy levels</p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+              <CardTitle className="text-sm font-medium">BOD</CardTitle>
+              <Waves className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className={`text-2xl font-bold ${getStatusColor(liveData.bod, "bod")}`}>
+                {liveData.bod.toFixed(1)} mg/L
+              </div>
+              <p className="text-xs text-muted-foreground mt-1">
+                {liveData.bod < 5 ? "Optimal range" : "Above threshold"}
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+              <CardTitle className="text-sm font-medium">COD</CardTitle>
+              <FlaskConical className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className={`text-2xl font-bold ${getStatusColor(liveData.cod, "cod")}`}>
+                {liveData.cod.toFixed(1)} mg/L
+              </div>
+              <p className="text-xs text-muted-foreground mt-1">
+                {liveData.cod < 20 ? "Optimal range" : "Above threshold"}
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+              <CardTitle className="text-sm font-medium">Heavy Metals</CardTitle>
+              <Skull className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className={`text-2xl font-bold ${getStatusColor(liveData.heavyMetals, "heavyMetals")}`}>
+                {liveData.heavyMetals.toFixed(3)} mg/L
+              </div>
+              <p className="text-xs text-muted-foreground mt-1">
+                {liveData.heavyMetals < 0.05 ? "Safe levels" : "Above threshold"}
+              </p>
             </CardContent>
           </Card>
         </div>

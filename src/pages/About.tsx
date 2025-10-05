@@ -1,14 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Cpu, Waves, Target, Award, Users, Lightbulb } from "lucide-react";
+import { Cpu, Waves, Target, Award, Lightbulb } from "lucide-react";
 
 const About = () => {
-  const teamMembers = [
-    { name: "N.Nithisree", role: "Project Lead" },
-    { name: "P.Piragadee Shree", role: "AI/ML Engineer" },
-    { name: "R.Rohini", role: "IoT Specialist" },
-    { name: "E.Senthamil Kannan", role: "Systems Architect" },
-  ];
-
   const impacts = [
     {
       icon: Target,
@@ -173,30 +166,6 @@ const About = () => {
             ))}
           </div>
         </div>
-
-        {/* Team Section */}
-        <Card>
-          <CardHeader>
-            <div className="flex items-center space-x-2">
-              <Users className="h-6 w-6 text-primary" />
-              <CardTitle>Project Team</CardTitle>
-            </div>
-            <CardDescription>Dedicated professionals driving innovation</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {teamMembers.map((member, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-24 h-24 bg-gradient-to-br from-primary to-accent rounded-full mx-auto mb-3 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-white">{member.name.split(' ').map(n => n[0]).join('')}</span>
-                  </div>
-                  <h3 className="font-semibold">{member.name}</h3>
-                  <p className="text-sm text-muted-foreground">{member.role}</p>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
 
         {/* Partners */}
         <div className="mt-12 text-center">
